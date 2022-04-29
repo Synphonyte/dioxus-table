@@ -1,0 +1,23 @@
+[package]
+name = "dioxus-table"
+version = "0.1.0"
+edition = "2021"
+authors = ["Maccesch"]
+license-file = "LICENSE"
+description = "Make data-driven table rendering easy with Dioxus"
+repository = "https://github.com/Synphonyte/dioxus-table"
+readme = "README.md"
+keywords = ["dioxus", "table", "rendering", "front-end", "ui", "gui", "wasm"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+table-data-macro = { path = "./table-data-macro", version = "^0.1.0" }
+dioxus = { git = "https://github.com/DioxusLabs/dioxus" }
+serde_json = "1.0.79"
+serde = { version = "1.0.136", features = ["derive"] }
+
+[workspace]
+members = [
+    "table-data-macro"
+]

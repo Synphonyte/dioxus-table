@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Awesome",
+    "rating": 5,
+    "city": "Gotham"
+  },
+  {
+    "id": 2,
+    "name": "Super",
+    "rating": 5,
+    "city": "Metropolis"
+  },
+  {
+    "id": 2,
+    "name": "Fast",
+    "rating": 4,
+    "city": "Loud"
+  },
+  {
+    "id": 3,
+    "name": "Different",
+    "rating": 3,
+    "city": "America City"
+  }
+]
