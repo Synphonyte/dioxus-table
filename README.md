@@ -128,7 +128,7 @@ pub struct Book {
 ```
 
 With the default renderer we only see a number in the "Rating" column. If we want to display this
-numbe as stars we can write a custom renderer.
+number as stars we can write a custom renderer.
 
 ```rust
 #[derive(PartialEq, TableData)]
@@ -144,7 +144,7 @@ pub fn StarRenderer(cx: Scope<DefaultTableCellProps<i32>>) -> Element {
     // the value of the rating field is provided as cx.props.value here
     let count = cx.props.value as usize; 
 
-    // crate a string of `value` filled stars
+    // create a string with #count filled stars.
     let mut stars = "".to_owned();
     for _ in 0..count {
         stars += "★";
@@ -154,6 +154,7 @@ pub fn StarRenderer(cx: Scope<DefaultTableCellProps<i32>>) -> Element {
         stars += "☆";
     }
 
+    // display the string
     cx.render(rsx! {
         td {
             class: "{cx.props.class}",
@@ -178,4 +179,4 @@ pub struct Book {
 }
 ```
 
-To see how to implement them please refer to the default renderers in src/cell_renderers.rs and src/row_enderers.rs.
+To see how to implement them please refer to the default renderers in src/cell_renderers.rs and src/row_enderers.rs. The easiest way to get going is to copy and paste the respective default renderer and customize from there.
