@@ -21,7 +21,7 @@ pub struct Hotel {
 }
 ```
 
-This generates a Dioxus component ready to be used in your app.
+This generates a Dioxus component `Table` in the module `hotel` ready to be used in your app.
 
 ```rust
 // in your app:
