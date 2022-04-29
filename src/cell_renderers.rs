@@ -7,7 +7,7 @@ use std::fmt::Display;
 #[derive(Props, PartialEq)]
 pub struct DefaultTableCellProps<T: PartialEq> {
     #[props(default)]
-    pub class: String,
+    pub class: &'static str,
 
     pub value: T,
 
@@ -39,12 +39,12 @@ pub struct TableHeadEvent<E> {
 #[derive(Props)]
 pub struct DefaultTableHeaderProps<'a> {
     #[props(default)]
-    pub class: String,
+    pub class: &'a str,
 
     #[props(default)]
     pub onclick: EventHandler<'a, TableHeadEvent<MouseEvent>>,
 
-    pub field: String,
+    pub field: &'a str,
     pub column_index: usize,
 
     pub children: Element<'a>,
@@ -57,7 +57,7 @@ pub fn DefaultTableHeaderRenderer<'a>(cx: Scope<'a, DefaultTableHeaderProps<'a>>
             onclick: move |evt| {
                  cx.props.onclick.call(TableHeadEvent{
                     column_index: cx.props.column_index,
-                    field: cx.props.field.clone(),
+                    field: cx.props.field.to_owned(),
                     event: evt,
                  })
             },

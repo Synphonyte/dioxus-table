@@ -138,7 +138,7 @@ fn get_props_for_field(name: &syn::Ident, field: &TableDataField) -> TokenStream
 
     quote! {
         value: item.#name.clone(),
-        class: #class.to_owned(),
+        class: #class,
         #precision
     }
 }
@@ -198,9 +198,9 @@ impl ToTokens for TableDataDeriveInput {
             let head_renderer = get_head_renderer_for_field(name, f, head_cell_renderer);
             titles.push(quote! { rsx! {
                 #head_renderer {
-                    class: #head_class.to_owned(),
+                    class: #head_class,
                     column_index: #i,
-                    field: #name_str.to_owned(),
+                    field: #name_str,
                     onclick: move |evt| cx.props.onheadclick.call(evt),
                     #title
                 }
@@ -237,14 +237,14 @@ impl ToTokens for TableDataDeriveInput {
                     #tag {
                         class: "{cx.props.class}",
                         tr {
-                            // class: #head_row_class.to_owned(), TODO : this results in "attribute is missing a trailing comma" error
+                            class: #head_row_class,
                             #(#titles)*
                         }
                         cx.props.items.iter().enumerate().map(|(i, item)| rsx!(
                             #row_renderer {
                                 index: i,
                                 item: item,
-                                class: #row_class.to_owned(),
+                                class: #row_class,
                                 onclick: move |evt| cx.props.onrowclick.call(evt),
                                 #(#cells)*
                             }

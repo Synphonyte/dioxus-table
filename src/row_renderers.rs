@@ -6,7 +6,7 @@ use dioxus::prelude::*;
 #[derive(Props)]
 pub struct DefaultTableRowProps<'a, T: 'a> {
     #[props(default)]
-    pub class: String,
+    pub class: &'a str,
 
     pub children: Element<'a>,
 
