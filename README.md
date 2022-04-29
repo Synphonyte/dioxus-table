@@ -79,6 +79,8 @@ cx.render(rsx! {
 })
 ```
 
+When you click on a head cell or on a data row you'll see some information logged to the console.
+
 ## Customization
 
 You can customize most aspects of the table rendering. Here is an overview of all available options.
