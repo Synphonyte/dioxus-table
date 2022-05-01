@@ -109,7 +109,37 @@ You can customize most aspects of the table rendering. Here is an overview of al
 | tag                | The HTML tag name used for the root of the table. Defaults to `"table"`.          |
 | row_renderer       | Custom row renderer component                                                     |
 | head_cell_renderer | Custom head cell renderer component                                               |
+| dyn_row_classes    | Enables reactive row classes through the method `row_classes()`                   |
 
+### Dynamic row classes
+
+A simple way to give feedback to interactions is to add a class to a row element. This makes is easy to
+highlight a selected row for example. Above the `struct` enable the `dyn_row_classes` option.
+
+```rust
+#[derive(PartialEq, TableData)]
+#[table(dyn_row_classes)]
+struct Hotel {
+    ...
+}
+```
+
+What classes are added to a row is determined by calling the `row_classes()` method. So let's implement it.
+
+```rust
+impl Hotel {
+    fn row_classes(&self, index: usize, cx: Scope<T>) -> Vec<String> {
+        if /* this hotel is selected */ {
+            vec!["selected".to_string()]
+        } else {
+            vec![]
+        }
+    }
+}
+```
+
+The method `row_classes()` is called for each row. It receives the `index` of the row and the current context.
+Please look at the hotel example in the `examples` directory for a full example.
 
 ### Custom renderers
 
@@ -170,7 +200,7 @@ pub fn StarRenderer(cx: Scope<DefaultTableCellProps<i32>>) -> Element {
 
 Now the rating is properly displayed as stars. To see this in action run the hotels example in the `examples/` folder.
 
-### Custom row and head cell renderers
+#### Custom row and head cell renderers
 
 They work basically the same as the cell renderers but are specified above the struct definition.
 

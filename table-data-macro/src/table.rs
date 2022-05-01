@@ -68,9 +68,9 @@ impl TableDataField {
 
 #[derive(Debug, FromDeriveInput)]
 #[darling(
-    attributes(table),
-    supports(struct_named),
-    forward_attrs(allow, doc, cfg)
+attributes(table),
+supports(struct_named),
+forward_attrs(allow, doc, cfg)
 )]
 pub struct TableDataDeriveInput {
     ident: syn::Ident,
@@ -90,6 +90,9 @@ pub struct TableDataDeriveInput {
 
     #[darling(default)]
     head_cell_renderer: Option<IdentString>,
+
+    #[darling(default)]
+    dyn_row_classes: bool,
 }
 
 fn get_renderer_for_field(name: &syn::Ident, field: &TableDataField) -> TokenStream2 {
@@ -154,6 +157,7 @@ impl ToTokens for TableDataDeriveInput {
             ref row_class,
             ref head_row_class,
             ref head_cell_renderer,
+            dyn_row_classes,
         } = *self;
 
         let row_renderer = row_renderer
@@ -169,10 +173,19 @@ impl ToTokens for TableDataDeriveInput {
             })
             .unwrap_or(quote!(table));
 
-        let row_class = row_class
+        let mut row_class = row_class
             .as_ref()
             .map(|s| s.clone())
             .unwrap_or("".to_owned());
+
+        let dyn_row_class_compute = if dyn_row_classes {
+            row_class.push_str(" {dyn_row_class}");
+            quote! {
+                let dyn_row_class = item.row_classes(i, cx).join(" ");
+            }
+        } else {
+            quote! {}
+        };
 
         let head_row_class = head_row_class
             .as_ref()
@@ -245,15 +258,19 @@ impl ToTokens for TableDataDeriveInput {
                             class: #head_row_class,
                             #(#titles)*
                         }
-                        cx.props.items.iter().enumerate().map(|(i, item)| rsx!(
-                            #row_renderer {
-                                index: i,
-                                item: item,
-                                class: #row_class,
-                                onclick: move |evt| cx.props.onrowclick.call(evt),
-                                #(#cells)*
+                        cx.props.items.iter().enumerate().map(|(i, item)| {
+                            #dyn_row_class_compute
+
+                            rsx!{
+                                #row_renderer {
+                                    index: i,
+                                    item: item,
+                                    class: #row_class,
+                                    onclick: move |evt| cx.props.onrowclick.call(evt),
+                                    #(#cells)*
+                                }
                             }
-                        ))
+                        })
                     }
                 })
             }

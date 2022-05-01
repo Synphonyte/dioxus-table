@@ -3,7 +3,7 @@
 mod hotel;
 
 use dioxus_table::{TableHeadEvent, TableRowEvent};
-use hotel::{Hotel, Table as HotelTable};
+use hotel::{Hotel, Table as HotelTable, SELECTED};
 use web_sys;
 
 use dioxus::prelude::*;
@@ -12,6 +12,7 @@ use reqwest;
 fn main() {
     dioxus::web::launch(App);
 }
+
 
 fn App(cx: Scope) -> Element {
     let request = use_future(&cx, (), |_| async move {
@@ -22,13 +23,15 @@ fn App(cx: Scope) -> Element {
             .await
     });
 
+    let set_selected = use_set(&cx, SELECTED);
+
     cx.render(match request.value() {
         Some(Ok(items)) => rsx! {
             HotelTable {
                 class: "table",
                 items: items,
                 onrowclick: move |evt: TableRowEvent<_, _>| {
-                    web_sys::console::log_1(&format!("Row {}", evt.row_index).into());
+                    set_selected(Some(evt.row_index));
                 },
                 onheadclick: move |evt: TableHeadEvent<_>| {
                     web_sys::console::log_1(&format!("Head {} '{}'", evt.column_index, evt.field).into());
