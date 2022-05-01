@@ -12,7 +12,11 @@ pub struct Hotel {
 
     #[table(renderer = "StarRenderer", class = "text-center")]
     pub rating: i32,
+
     pub city: String,
+
+    #[table(skip)]
+    pub internal: u32,
 }
 
 pub fn StarRenderer(cx: Scope<DefaultTableCellProps<i32>>) -> Element {

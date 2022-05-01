@@ -35,6 +35,12 @@ fn App(cx: Scope) -> Element {
                 },
             }
         },
+        Some(Err(e)) => rsx! {
+            div {
+                h1 { "Error"}
+                p { "{e}" }
+            }
+        },
         _ => rsx! {
              "Loading..."
         },

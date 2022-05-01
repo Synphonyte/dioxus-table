@@ -31,6 +31,9 @@ struct TableDataField {
 
     #[darling(default)]
     title: Option<String>,
+
+    #[darling(default)]
+    skip: bool,
 }
 
 impl TableDataField {
@@ -117,8 +120,6 @@ fn get_head_renderer_for_field(
     field: &TableDataField,
     head_cell_renderer: &Option<IdentString>,
 ) -> TokenStream2 {
-    let props = get_props_for_field(name, &field);
-
     if let Some(renderer) = &head_cell_renderer {
         let ident = renderer.as_ident();
         quote! {#ident}
@@ -184,6 +185,10 @@ impl ToTokens for TableDataDeriveInput {
         let mut cells = vec![];
 
         for (i, f) in fields.into_iter().enumerate() {
+            if f.skip {
+                continue;
+            }
+
             let name = f.ident.as_ref().expect("named field");
             let name_str = name.to_string();
 

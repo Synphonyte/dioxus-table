@@ -28,6 +28,9 @@ pub struct Hotel {
     pub name: String,
 
     pub city: String,
+    
+    #[table(skip)] // don't show this column
+    pub internal: u32,
 }
 ```
 
@@ -95,6 +98,7 @@ You can customize most aspects of the table rendering. Here is an overview of al
 | title      | Custom title that is put into the `<th>`. By default the capitalized field name is used. |
 | precision  | For decimal types this sets the number of digits after the decimal point                 |
 | renderer   | Custom cell render component                                                             |
+| skip       | Don't render this column                                                                 |
 
 ### Per-table options
 

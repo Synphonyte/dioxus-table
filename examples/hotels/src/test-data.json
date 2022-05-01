@@ -3,24 +3,28 @@
     "id": 1,
     "name": "Awesome",
     "rating": 5,
-    "city": "Gotham"
+    "city": "Gotham",
+    "internal": 42
   },
   {
     "id": 2,
     "name": "Super",
     "rating": 5,
-    "city": "Metropolis"
+    "city": "Metropolis",
+    "internal": 42
   },
   {
     "id": 2,
     "name": "Fast",
     "rating": 4,
-    "city": "Loud"
+    "city": "Loud",
+    "internal": 42
   },
   {
     "id": 3,
     "name": "Different",
     "rating": 3,
-    "city": "America City"
+    "city": "America City",
+    "internal": 42
   }
 ]
