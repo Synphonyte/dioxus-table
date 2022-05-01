@@ -43,8 +43,8 @@ use hotel::{Hotel, Table as HotelTable};
 fn App(cx: Scope) -> Element {
     // get some hotels
     let hotels = vec![
-        Hotel { id: 1, name: "Hotel 1".to_owned(), city: "City 1".to_owned() },
-        Hotel { id: 2, name: "Hotel 2".to_owned(), city: "City 2".to_owned() },
+        Hotel { id: 1, name: "Hotel 1".to_owned(), city: "City 1".to_owned(), internal: 42 },
+        Hotel { id: 2, name: "Hotel 2".to_owned(), city: "City 2".to_owned(), internal: 42 },
     ];
 
     cx.render(rsx! {
