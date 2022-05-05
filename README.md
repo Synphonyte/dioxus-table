@@ -1,17 +1,24 @@
 # Dioxus Table
 
+<!-- Crates version -->
+<a href="https://crates.io/crates/dioxus-table">
+    <img src="https://img.shields.io/crates/v/dioxus-table.svg?style=flat" alt="Crates.io version" />
+</a>
 
+<!-- Sponsor -->
+<a href="https://github.com/sponsors/Synphonyte">
+    <img src="https://img.shields.io/github/sponsors/Synphonyte?logo=github-sponsors&style=flat" alt="GitHub Sponsors" />
+</a>
 
 Make data-driven table rendering easy with Dioxus
 
 ## Installation
 
-Until the next release of Dioxus this requires Dioxus nightly from git. Thus no published crate yet.
-It is still easy to use in your project though. Add this to your Cargo.toml:
+Add the following to your Cargo.toml
 
 ```toml
 [dependencies]
-dioxus-table = { git = "https://github.com/Synphonyte/dioxus-table", version = "0.1.0" }
+dioxus-table = "0.1.1"
 ```
 
 ## Quickstart
