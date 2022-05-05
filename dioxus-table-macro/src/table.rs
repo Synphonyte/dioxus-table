@@ -119,8 +119,6 @@ fn get_renderer_for_field(name: &syn::Ident, field: &TableDataField) -> TokenStr
 }
 
 fn get_head_renderer_for_field(
-    name: &syn::Ident,
-    field: &TableDataField,
     head_cell_renderer: &Option<IdentString>,
 ) -> TokenStream2 {
     if let Some(renderer) = &head_cell_renderer {
@@ -213,7 +211,7 @@ impl ToTokens for TableDataDeriveInput {
 
             let head_class = f.head_class();
 
-            let head_renderer = get_head_renderer_for_field(name, f, head_cell_renderer);
+            let head_renderer = get_head_renderer_for_field(head_cell_renderer);
             titles.push(quote! { rsx! {
                 #head_renderer {
                     class: #head_class,

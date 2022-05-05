@@ -10,7 +10,7 @@ readme = "README.md"
 keywords = ["dioxus", "table", "rendering", "front-end", "ui", "gui", "wasm"]
 
 [dependencies]
-dioxus-table-macro = { path = "dioxus-table-macro", version = "^0.1.0" }
+dioxus-table-macro = { path = "dioxus-table-macro", version = "^0.1.1" }
 dioxus = "0.2.4"
 serde_json = "1.0.79"
 serde = { version = "1.0.136", features = ["derive"] }
