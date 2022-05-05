@@ -7,7 +7,7 @@ license-file = "LICENSE"
 description = "Make data-driven table rendering easy with Dioxus"
 repository = "https://github.com/Synphonyte/dioxus-table"
 readme = "README.md"
-keywords = ["dioxus", "table", "rendering", "front-end", "ui", "gui", "wasm"]
+keywords = ["dioxus", "table", "front-end", "wasm"]
 
 [dependencies]
 dioxus-table-macro = { path = "dioxus-table-macro", version = "^0.1.1" }
