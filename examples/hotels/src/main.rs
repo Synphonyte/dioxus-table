@@ -7,7 +7,7 @@ use hotel::{Hotel, Table as HotelTable, SELECTED};
 use web_sys;
 
 use dioxus::prelude::*;
-use reqwest;
+use gloo_net::http::Request;
 
 fn main() {
     dioxus::web::launch(App);
@@ -16,9 +16,10 @@ fn main() {
 
 fn App(cx: Scope) -> Element {
     let request = use_future(&cx, (), |_| async move {
-        reqwest::get("http://localhost:8080/test-data.json") // TODO : relative uris don't work. maybe we don't need it either.
+        Request::get("test-data.json")
+            .send()
             .await
-            .expect("To workr")
+            .expect("To work")
             .json::<Vec<Hotel>>()
             .await
     });
