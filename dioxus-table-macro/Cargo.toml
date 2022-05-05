@@ -2,6 +2,10 @@
 name = "dioxus-table-macro"
 version = "0.1.0"
 edition = "2021"
+authors = ["Maccesch"]
+license-file = "../LICENSE"
+description = "Make data-driven table rendering easy with Dioxus - macro crate"
+repository = "https://github.com/Synphonyte/dioxus-table"
 
 [lib]
 proc-macro = true

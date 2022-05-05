@@ -9,8 +9,6 @@ repository = "https://github.com/Synphonyte/dioxus-table"
 readme = "README.md"
 keywords = ["dioxus", "table", "rendering", "front-end", "ui", "gui", "wasm"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 dioxus-table-macro = { path = "dioxus-table-macro", version = "^0.1.0" }
 dioxus = "0.2.4"
