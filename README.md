@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/github/sponsors/Synphonyte?logo=github-sponsors&style=flat" alt="GitHub Sponsors" />
 </a>
 
-Make data-driven table rendering easy with Dioxus ([Live Example]())
+Make data-driven table rendering easy with Dioxus ([Live Example](https://dioxus-table.netlify.app/))
 
 ## Installation
 
