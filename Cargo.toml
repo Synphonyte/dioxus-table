@@ -13,7 +13,7 @@ keywords = ["dioxus", "table", "rendering", "front-end", "ui", "gui", "wasm"]
 
 [dependencies]
 table-data-macro = { path = "./table-data-macro", version = "^0.1.0" }
-dioxus = { git = "https://github.com/DioxusLabs/dioxus" }
+dioxus = "0.2.4"
 serde_json = "1.0.79"
 serde = { version = "1.0.136", features = ["derive"] }
 
