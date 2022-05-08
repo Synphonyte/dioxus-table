@@ -178,7 +178,7 @@ number as stars we can write a custom renderer.
 pub struct Book {
     pub title: i32,
     
-    #[table(cell_renderer = "StarRenderer")] // specify the custom renderer
+    #[table(renderer = "StarRenderer")] // specify the custom renderer
     pub rating: u8,
 }
 
