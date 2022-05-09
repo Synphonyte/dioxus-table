@@ -1,11 +1,9 @@
 [package]
-name = "client"
+name = "hotels"
 version = "0.1.0"
 edition = "2021"
 authors = ["Maccesch <maccesch@synphonyte.com>"]
 publish = false
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 dioxus = { version = "0.2.4", features = ["web", "router", "fermi"] }
